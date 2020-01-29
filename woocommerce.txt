@@ -1,0 +1,380 @@
+
+https://medium.com/@tcguy/angular-unit-testing-login-c39da80ae696
+
+https://www.agiratech.com/angular-unit-testing/
+
+https://www.youtube.com/playlist?list=PLZkSegaxllQRD07HYndLMMvinhvE5eXon
+
+https://github.com/tlcheah2/angular-unit-testing
+
+
+
+
+
+https://nodeart.github.io
+https://themeforest.net/item/stroyka-tools-store-angular-7-template/23523630
+https://themeforest.net/item/multikart-responsive-angular-ecommerce-template/22905358
+http://angular.pixelstrap.com/multikart/home/one
+https://github.com/subramaniashiva/angular-ecommerce-demo
+https://www.purchasecommerce.com/blog/ecommerce-technology-stack
+https://demo.purchasecommerce.com/product-list/7
+
+
+https://www.youtube.com/playlist?list=PLUM5OzhA1S2HFKznfrjIBOGsJnfmpxKbc
+
+---------------------------------------
+
+https://mattmanero.com/
+https://jaysjems.com/
+https://www.isenbergfaucets.com/
+https://www.buchanst.com/
+http://gina.spencercreativegroup.com/
+https://www.alicelaw.com/
+https://canadasalt.ca/
+http://www.mediafy.ca/
+http://realestate.ayatastechnologies.com/
+https://www.recurrency.ai/
+http://www.greengoldlandscapinginc.com/
+
+
+crm/ayatasgateway.com/api/
+
+
+https://www.wappalyzer.com/technologies
+
+---------------------------------------
+
+https://wordpress.org/plugins/woocommerce-products-filter
+
+https://wordpress.org/plugins/woo-product-videos/
+
+https://wordpress.org/plugins/woo-product-slider/  -  product slider
+
+https://wordpress.org/plugins/advanced-woocommerce-product-gallery-slider/  -  product page gallery
+
+https://wordpress.org/plugins/smntcs-woocommerce-quantity-buttons/ -  Quantity Buttons
+
+https://wordpress.org/plugins/woocommerce-image-zoom/ - peoduct gallery images zoom effect
+
+https://wordpress.org/plugins/add-to-any/ - products sharing 
+
+https://businessbloomer.com/woocommerce-conditional-logic-ultimate-php-guide/  -  'if Conditions' for woocommerce
+
+https://businessbloomer.com/  -  **** ref site for woocommerce ****
+
+https://wpstorelocator.co/ - Doc -> https://wpstorelocator.co/document/wpsl_map_controls/
+
+https://wordpress.org/plugins/menu-image   -   Menu Image
+
+https://wordpress.org/plugins/recent-posts-widget-with-thumbnails/   -    Recent Posts Widget With Thumbnails
+
+https://wordpress.org/plugins/sassy-social-share/   -    Sassy Social Share
+
+https://wordpress.org/plugins/sku-shortlink-for-woocommerce/     -      SKU Shortlink For WooCommerce 
+
+https://wordpress.org/plugins/woocommerce-ajax-filters/   -      WC Ajax Product Filter
+
+https://wordpress.org/plugins/woocommerce-products-filter/     -     WOOF - WooCommerce Products Filter
+
+https://wordpress.org/plugins/woocommerce-image-zoom/      -         WooCommerce Image Zoom
+
+https://wordpress.org/plugins/advanced-woo-search/      -      Advanced Woo Search
+
+https://wordpress.org/plugins/if-menu/                  -      login  /  myaccount pages toggle
+
+https://wordpress.org/plugins/woocommerce-social-media-share-buttons/       -      Woocommerce Social Media Share Buttons  -  product share icons  -    <?php echo do_shortcode('[woocommerce_social_media_share_buttons]'); ?>
+
+https://wordpress.org/plugins/wpb-woocommerce-related-products-slider/   -   WPB WooCommerce Related Products Slider   -   
+
+
+CODE SNIPPTS:
+----------------------------------------------
+
+https://stackoverflow.com/questions/26247988/woocommerce-replace-add-to-cart-url-to-link-to-product-page
+
+https://businessbloomer.com/woocommerce-visual-hook-guide-single-product-page/  -  ***product single page structure
+
+https://www.wpdesk.net/blog/woocommerce-cart-hooks/                             -  ** Cart page structure
+
+https://remicorson.com/how-to-customize-the-woocommerce-checkout-page/          - ** checkout page structure
+
+https://docs.woocommerce.com/document/woocommerce-shortcodes/                   - * Short codes
+
+https://www.tychesoftwares.com/woocommerce-shop-page-hooks-visual-guide-with-code-snippets/    -* shop page
+
+
+https://docs.woocommerce.com/document/sample-products-loop/
+
+https://docs.woocommerce.com/document/editing-product-data-tabs/
+
+https://premmerce.com/exporting-products-woocommerce-tutorial-settings-guide/   - Exporting Products Woocommerce
+
+https://gist.github.com/corsonr/6681929 - display all categeres
+
+https://www.pootlepress.com/2014/04/100-woocommerce-tips-tricks/  -  100 Tips - snippets
+
+
+// Add fields in woocommerce
+https://remicorson.com/woocommerce-custom-fields-for-variations/
+https://remicorson.com/mastering-woocommerce-products-custom-fields/
+https://barn2.co.uk/woocommerce-custom-fields/
+
+
+================================================
+
+
+// Show SKU Number - single product page
+LINK :- https://wordpress.stackexchange.com/questions/219410/how-to-show-product-sku-on-product-page
+
+add_action( 'woocommerce_single_product_summary', 'dev_designs_show_sku', 5 );
+function dev_designs_show_sku(){
+    global $product;
+    echo 'SKU: ' . $product->get_sku();
+}
+
+// Display SKU any where
+<?php 
+   global $product;
+   echo $product->get_sku();
+?>
+
+-------------------------------------------------
+
+
+// always display rating stars
+LINK :- 
+
+function filter_woocommerce_product_get_rating_html( $rating_html, $rating, $count ) { 
+    $rating_html  = '<div class="star-rating">';
+    $rating_html .= wc_get_star_rating_html( $rating, $count );
+    $rating_html .= '</div>';
+    return $rating_html; 
+};  
+add_filter( 'woocommerce_product_get_rating_html', 'filter_woocommerce_product_get_rating_html', 10, 3 );
+
+
+
+
+-------------------------------------------------
+
+
+// move comment field to bottom
+LINK :- 
+
+function move_comment_field_to_bottom( $fields ) {
+$comment_field = $fields['comment'];
+unset( $fields['comment'] );
+$fields['comment'] = $comment_field;
+return $fields;
+}
+add_filter( 'comment_form_fields', 'move_comment_field_to_bottom' );
+
+-------------------------------------------------
+
+
+function brightvessel_woocommerce_show_stock() {
+   global $product;
+	if ( $product->stock ) {
+		if ( number_format( $product->stock,0,'','' ) < 3 ) { // if stock is low
+			echo '<div class="remaining"><span>In Stock</span> Only ' . number_format($product->stock,0,'','') . ' left</div>';
+		} else {
+			echo '<div class="remaining"><span>In Stock</span> ' . number_format($product->stock,0,'','') . ' left</div>'; 
+		}
+	}
+}
+add_action( 'woocommerce_single_product_summary', 'brightvessel_woocommerce_show_stock', 10 );
+
+
+-------------------------------------------------
+
+
+// display coupon below the checkout
+LINK :- https://businessbloomer.com/woocommerce-move-remove-coupon-form-cart-checkout/
+
+
+add_action( 'woocommerce_proceed_to_checkout', 'bbloomer_display_coupon_form_below_proceed_checkout', 10 );
+ 
+function bbloomer_display_coupon_form_below_proceed_checkout() { ?> 
+      <form class="woocommerce-coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+         <?php if ( wc_coupons_enabled() ) { ?>
+            <div class="coupon under-proceed">
+               <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> 
+               <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
+            </div>
+         <?php } ?>
+      </form>
+   <?php
+} ?>
+
+
+-------------------------------------------------
+
+
+// display all cat in dropdown
+LINK :- https://stackoverflow.com/questions/35471966/how-do-i-display-a-category-products-drop-down-in-a-wordpress-page-in-woocomme
+<?php
+			$args = array(
+			    'order'      => 'ASC',
+			    'hide_empty' => $hide_empty,
+			    'include'    => $ids,
+			    'posts_per_page' =>'-1'
+			);
+			$product_categories = get_terms( 'product_cat', $args );
+			?>
+			<select id="mySelect" name="mySelect">
+			<?php
+			foreach( $product_categories as $category ){
+			    echo "<option value = '" . get_category_link( $category->term_id ) . "'>" . esc_html( $category->name ) . "</option>";
+			}
+			?>
+			</select>
+
+			<script>
+				jQuery(document).ready(function () {
+				    jQuery('#mySelect').change(function(){ 
+						var value = jQuery(this).val();
+						window.location.assign(value);
+					});
+
+				});	
+			</script>
+
+
+// display all cat in list
+LINK :- https://stackoverflow.com/questions/26400613/get-all-woocommerce-categories-in-dropdown
+<?php
+
+$args = array( 'type' => 'product', 'taxonomy' => 'product_cat' ); 
+$categories = get_categories( $args ); 
+
+
+ foreach ($categories as $cat) { ?>
+        <li><a href="<?php echo get_term_link($cat->slug, 'product_cat') ?>"><i class="fa fa-chevron-right"></i><?php echo $cat->name; ?></a></li>
+<?php } ?>
+
+
+-------------------------------------------------
+// display_price_in_variation_option_name
+add_filter( 'woocommerce_variation_option_name', 'display_price_in_variation_option_name' );
+
+function display_price_in_variation_option_name( $term ) {
+    global $wpdb, $product;
+
+    if ( empty( $term ) ) return $term;
+    if ( empty( $product->id ) ) return $term;
+
+    $id = $product->get_id();
+
+    $result = $wpdb->get_col( "SELECT slug FROM {$wpdb->prefix}terms WHERE name = '$term'" );
+
+    $term_slug = ( !empty( $result ) ) ? $result[0] : $term;
+
+    $query = "SELECT postmeta.post_id AS product_id
+                FROM {$wpdb->prefix}postmeta AS postmeta
+                    LEFT JOIN {$wpdb->prefix}posts AS products ON ( products.ID = postmeta.post_id )
+                WHERE postmeta.meta_key LIKE 'attribute_%'
+                    AND postmeta.meta_value = '$term_slug'
+                    AND products.post_parent = $id";
+
+    $variation_id = $wpdb->get_col( $query );
+
+    $parent = wp_get_post_parent_id( $variation_id[0] );
+
+    if ( $parent > 0 ) {
+         $_product = new WC_Product_Variation( $variation_id[0] );
+         return $term . ' (' . wp_kses( woocommerce_price( $_product->get_price() ), array() ) . ')';
+    }
+    return $term;
+
+}
+
+
+
+-------------------------------------------------
+// Change woocommerce pagination order
+https://gist.github.com/agusmu/6265795
+
+/* Show pagination on the top of shop page */
+add_action( 'woocommerce_before_shop_loop', 'woocommerce_pagination', 10 );
+
+/* Remove pagination on the bottom of shop page */
+remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
+
+
+========================================================================================================================================================================================================
+CSS STYLES:
+========================================================================================================================================================================================================
+
+
+/* Checkout */
+.woocommerce-checkout h3{ border-bottom: 1px solid #ccc; padding-bottom: 15px;}
+.woocommerce-checkout input{ line-height: 26px !important; border: 1px solid #ccc; border-radius: 4px; padding: 7px 15px; }
+.select2-container .select2-selection--single{ height: auto; padding: 7px; }
+.select2-container--default .select2-selection--single, .woocommerce form .form-row textarea{ border: 1px solid #ccc; }
+.select2-container--default .select2-selection--single .select2-selection__arrow{ height: 42px; }
+.woocommerce form .form-row textarea{ border: 1px solid #ccc;  border-radius: 4px; padding: 10px 15px; min-height: 140px;}
+.woocommerce form .form-row label{ font-weight: 400; }
+.woocommerce form .form-row{margin-bottom: 15px;}
+.woocommerce form .form-row label{ margin-bottom: 0; }
+.woocommerce-additional-fields{margin-bottom: 30px;}
+.woocommerce td.product-name dl.variation dt{padding: 5px 0px;}
+.woocommerce td.product-name dl.variation dd{padding: 4px 0;}
+.woocommerce td.product-name dl.variation{padding-top: 8px;}
+
+
+
+
+==============================================================
+
+var maxHeight = 0;
+$(".product-text, .wpb_wrps_title").each(function(){
+   if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+});
+$(".product-text, .wpb_wrps_title").height(maxHeight);
+
+
+==============================================================
+hide empty cat
+https://www.themelocation.com/how-to-hide-empty-categories-from-category-widget-in-woocommerce/
+
+functionwoo_hide_product_categories_widget( $list_args ){
+ 
+            $list_args[ 'hide_empty' ] = 1;
+ 
+            return $list_args;
+ 
+}
+ 
+add_filter( 'woocommerce_product_categories_widget_args', 'woo_hide_product_categories_widget' );
+
+==============================================================
+// Get directions map
+https://css-tricks.com/snippets/html/get-directions-form-google-maps/
+
+
+<form action="http://maps.google.com/maps" method="get" target="_blank">
+   <label for="saddr">Enter your location</label>
+   <input type="text" name="saddr" />
+   <input type="hidden" name="daddr" value="350 5th Ave New York, NY 10018 (Empire State Building)" />
+   <input type="submit" value="Get directions" />
+</form>
+
+==============================================================
+woocommerce > setting > product > WooCommerce Products Per Page - Default products per page
+// per page product count
+add_filter( 'loop_shop_per_page', 'bbloomer_redefine_products_per_page', 9999 );
+ 
+function bbloomer_redefine_products_per_page( $per_page ) {
+  $per_page = 24;
+  return $per_page;
+}
+
+==================================================================
+// copy this code in functions.php
+// display an 'Out of Stock' label on archive pages
+add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_stock', 10 );
+function woocommerce_template_loop_stock() {
+    global $product;
+    if ( ! $product->managing_stock() && ! $product->is_in_stock() )
+        echo '<p class="sold-out">Sold Out</p>';
+}
