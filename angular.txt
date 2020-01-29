@@ -1,0 +1,53 @@
+https://medium.com/@tcguy/angular-unit-testing-login-c39da80ae696
+
+https://www.agiratech.com/angular-unit-testing/
+
+https://www.youtube.com/playlist?list=PLZkSegaxllQRD07HYndLMMvinhvE5eXon
+
+https://github.com/tlcheah2/angular-unit-testing
+
+
+
+
+
+
+
+
+
+https://nodejs.org/en/
+
+node -v  12.14.1
+npm -v   6.13.4
+npm i -g npm@latest
+path: 
+d:
+cd folder name
+ng new demo
+
+
+
+error:
+
+'git' is not recognized as an internal or external command,operable program or batch file.
+-------------
+https://git-scm.com/download/win   -   download and install git
+
+cd d:/angular
+cd ..    -  back 1 step
+ 
+ls         list all items
+ls -1      list all items with details
+ls -1 *    list all items inside folder alsoc
+
+clear
+
+
+
+Step 1) npm install -g @angular/cli
+Step 2) ng new my-angular-project
+Step 3) cd my-angular-project
+Step 4) ng serve --open
+
+
+
+http://localhost:4200/
